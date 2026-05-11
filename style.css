@@ -1,0 +1,32 @@
+.pin-sniff-final {
+    position: absolute !important;
+    bottom: 8px !important;
+    left: 8px !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    z-index: 2000 !important;
+    pointer-events: none !important;
+    display: flex !important;
+    align-items: center;
+    white-space: nowrap !important;
+    font-family: Arial, sans-serif !important;
+}
+
+.state-loading {
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: #ffd700 !important;
+}
+
+.state-success {
+    background: #e60023 !important;
+    color: white !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+}
+
+.state-empty {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #999 !important;
+    border: 1px solid #ddd !important;
+}

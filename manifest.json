@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Pinterest Stats Sniffer Pro",
+  "version": "8.0",
+  "permissions": ["storage"],
+  "host_permissions": ["https://*.pinterest.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.pinterest.com/*"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}
