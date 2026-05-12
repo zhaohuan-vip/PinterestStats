@@ -2,8 +2,6 @@ const formatNum = (n) => {
     if (n === null || n === undefined || n === 0) return "--";
     const num = parseInt(n);
     if (isNaN(num)) return "--";
-    
-    // 统一转换：大于 1000 的全部显示为 k
     if (num >= 1000) {
         return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
     }
@@ -19,13 +17,13 @@ function init() {
         if (!pinId) return;
 
         pin.setAttribute('data-sniffed', 'true');
-        const target = pin.querySelector('[data-test-id="non-story-pin-image"]') || pin.querySelector('img')?.parentElement;
-        if (!target) return;
+        const imgContainer = pin.querySelector('[data-test-id="non-story-pin-image"]') || pin.querySelector('img')?.parentElement;
+        if (!imgContainer) return;
 
         const badge = document.createElement('div');
         badge.className = 'pin-sniff-final state-loading';
         badge.innerHTML = '⏳ 加载中'; 
-        target.appendChild(badge);
+        imgContainer.appendChild(badge);
 
         chrome.runtime.sendMessage({ type: 'FETCH_STATS', pinId: pinId }, (response) => {
             badge.classList.remove('state-loading');
@@ -33,7 +31,6 @@ function init() {
                 const s = response.saves;
                 const c = response.comments;
                 if (s || c) {
-                    // 显示转换后的 k
                     badge.innerHTML = `❤️ ${formatNum(s)} | 💬 ${formatNum(c)}`;
                     badge.classList.add('state-success');
                 } else {
